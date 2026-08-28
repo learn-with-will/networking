@@ -2,8 +2,8 @@
 
 ## TOPIC: Computer Networking
 
-> **This repo is `ThachThanhThien/networking`** — so `SLUG` = `networking`, and the finished course goes live at
-> `https://thachthanhthien.github.io/networking/`.
+> **This repo is `learn-with-will/networking`** — so `SLUG` = `networking`, and the finished course goes live at
+> `https://learn-with-will.github.io/networking/`.
 
 How the internet actually works, for developers — the OSI & TCP/IP models, IP addressing and subnetting, DNS, TCP vs UDP, HTTP/HTTPS and TLS, ports & sockets, routing, NAT, and hands-on troubleshooting with real CLI tools (ping, traceroute, dig, curl, netstat/ss, tcpdump).
 
@@ -13,7 +13,7 @@ How the internet actually works, for developers — the OSI & TCP/IP models, IP 
 This session is connected to the (empty) GitHub repo I chose for this course. From just the
 TOPIC above, **decide every other detail yourself** and build a complete course micro-app that
 matches my existing family (Angular, Redis, Data Science…), push it, and publish it to GitHub
-Pages. Owner is **ThachThanhThien**; it goes live at `https://thachthanhthien.github.io/<SLUG>/`.
+Pages. Owner is the org **learn-with-will**; it goes live at `https://learn-with-will.github.io/<SLUG>/`.
 
 ## Derive everything from TOPIC (don't ask me — pick sensible defaults)
 - **SLUG** — the topic's common lowercase name, kebab-case (`mongodb`, `aws`, `golang`, `kotlin`); repo + Pages path.
@@ -37,7 +37,7 @@ change). Ships via `.github/workflows/deploy.yml` (`BASE_PATH=/<repo>/`, `404.ht
 
 ## Steps
 1. **Get the shell** — clone my newest course and reuse it as the template:
-   `git clone --depth 1 https://github.com/ThachThanhThien/data-science _shell`
+   `git clone --depth 1 https://github.com/learn-with-will/data-science _shell`
    Copy all of `_shell` into this repo **except** `.git`, `node_modules`, `dist`, `public/content/*`,
    `public/quizzes/*`, `prompts/*`. Delete `_shell`, then `npm install`.
    *(If TOPIC is a frontend framework better built in itself, clone `vue` or `angular` instead.)*
@@ -71,7 +71,7 @@ change). Ships via `.github/workflows/deploy.yml` (`BASE_PATH=/<repo>/`, `404.ht
    `BASE_PATH=/<SLUG>/ npm run build` (`tsc -b` must be clean). `npm run preview` and smoke: index,
    manifest (24), a lesson `.md`, a quiz `.json`, favicon, and a deep link via `404.html` — all 200.
 9. **Ship** — commit + push to `main`; the Actions workflow builds and deploys. Enable Pages on the
-   Actions source once: `gh api -X POST repos/ThachThanhThien/<SLUG>/pages -f build_type=workflow`
+   Actions source once: `gh api -X POST repos/learn-with-will/<SLUG>/pages -f build_type=workflow`
    (or tell me to flip Settings → Pages → Source: GitHub Actions). When the run is green, smoke the
    **live** URL the same way.
 10. **Portal card** — the landing page lives in a **separate** repo (`ThachThanhThien/LearningPortal`,
@@ -79,7 +79,7 @@ change). Ships via `.github/workflows/deploy.yml` (`BASE_PATH=/<repo>/`, `404.ht
     `LOGOS['<SLUG>']` inline monochrome SVG.
     ```js
     { id:'<SLUG>', title:'<TOPIC>', description:'<TAGLINE + what the 24 lessons cover>',
-      url:'https://thachthanhthien.github.io/<SLUG>/', difficulty:'<DIFFICULTY>', category:'<CATEGORY>',
+      url:'https://learn-with-will.github.io/<SLUG>/', difficulty:'<DIFFICULTY>', category:'<CATEGORY>',
       tags:[<CARD_TAGS>], technologies:[<TECHNOLOGIES>], themeColor:'<THEME_HEX>', icon:'<BRAND_ICON>',
       estimatedHours:40, topics:24, isNew:true, isFeatured:true }
     ```
@@ -91,7 +91,7 @@ change). Ships via `.github/workflows/deploy.yml` (`BASE_PATH=/<repo>/`, `404.ht
   (jsDelivr) or draw a custom mark.
 
 ## Done when
-Pushed to `ThachThanhThien/<SLUG>`; workflow green; live at `.../<SLUG>/`; live smoke passes (index,
+Pushed to `learn-with-will/<SLUG>`; workflow green; live at `.../<SLUG>/`; live smoke passes (index,
 manifest 8/8/8, a lesson, a quiz, favicon, deep-link→404) all 200; 24 lessons + 24 quizzes + manifest;
 validator clean; `tsc -b` clean; reskinned with unique storage keys; authoring contract in `prompts/`;
 portal `COURSES` + `LOGOS` snippet produced.
