@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-16",
+  "lessonId": "lesson-16",
+  "title": "Troubleshooting with dig, curl, and traceroute",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "match-pair",
+      "prompt": "Match each tool to the layer it helps diagnose.",
+      "pairs": [
+        { "left": "dig", "right": "DNS name resolution" },
+        { "left": "traceroute", "right": "The network path / routing" },
+        { "left": "curl", "right": "The HTTP/HTTPS application response" },
+        { "left": "curl -w", "right": "Splitting request timing (DNS/connect/TLS/server)" }
+      ],
+      "explanation": "dig checks DNS, traceroute maps the path, curl probes the application, and curl -w breaks down where the time goes."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "How does traceroute discover each hop?",
+      "options": [
+        { "id": "a", "text": "By sending probes with increasing TTLs and reading the ICMP Time Exceeded replies" },
+        { "id": "b", "text": "By asking DNS for the list of routers" },
+        { "id": "c", "text": "By opening a TCP connection to every router" },
+        { "id": "d", "text": "By broadcasting to the whole internet" }
+      ],
+      "answer": "a",
+      "explanation": "Each probe's TTL is increased by one; the router where TTL hits 0 returns ICMP Time Exceeded, revealing itself one hop at a time."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "A traceroute shows '* * *' at hop 6, but hops 7, 8, and the destination all reply. What does this indicate?",
+      "options": [
+        { "id": "a", "text": "Hop 6 just isn't replying to probes; the path is fine" },
+        { "id": "b", "text": "The network is definitely broken at hop 6" },
+        { "id": "c", "text": "DNS has failed" },
+        { "id": "d", "text": "The destination server returned a 500 error" }
+      ],
+      "answer": "a",
+      "explanation": "Intermediate routers often ignore or rate-limit probes, producing '* * *'. Since later hops and the destination respond, the path works."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "The dig status meaning 'this name does not exist' is ____.",
+      "answer": ["NXDOMAIN", "nxdomain"],
+      "explanation": "NXDOMAIN means the queried name doesn't exist; SERVFAIL means the resolver failed to get an answer."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which are good uses of curl for diagnosis? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "curl -I to see the status code and headers quickly" },
+        { "id": "b", "text": "curl -v to inspect the TLS handshake and full exchange" },
+        { "id": "c", "text": "curl --resolve to test a specific backend IP, bypassing DNS" },
+        { "id": "d", "text": "curl to map every router on the path to the server" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "curl inspects HTTP/TLS and can bypass DNS with --resolve. Mapping routers on the path is traceroute's job, not curl's."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the layered troubleshooting steps.",
+      "items": [
+        { "id": "dns", "text": "dig — does the name resolve?" },
+        { "id": "path", "text": "traceroute — can packets reach the host?" },
+        { "id": "app", "text": "curl — does the service respond correctly?" }
+      ],
+      "answer": ["dns", "path", "app"],
+      "explanation": "Work in layer order: resolve the name, then check the path, then probe the application — each tool rules a layer in or out."
+    }
+  ]
+}

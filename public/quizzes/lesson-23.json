@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-23",
+  "lessonId": "lesson-23",
+  "title": "Network Performance: Latency, Bandwidth, and Throughput",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "match-pair",
+      "prompt": "Match each performance term to its definition.",
+      "pairs": [
+        { "left": "Bandwidth", "right": "Maximum capacity a link could carry" },
+        { "left": "Throughput", "right": "The rate you actually achieve" },
+        { "left": "Latency (RTT)", "right": "Delay for data to travel / round-trip" },
+        { "left": "Jitter", "right": "Variation in latency" }
+      ],
+      "explanation": "Bandwidth is capacity, throughput is achieved rate, latency is delay, and jitter is how much the delay varies."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why can't buying more bandwidth reduce latency?",
+      "options": [
+        { "id": "a", "text": "Latency is set mainly by distance and hops, not by capacity" },
+        { "id": "b", "text": "Bandwidth and latency are the same thing" },
+        { "id": "c", "text": "More bandwidth always increases latency" },
+        { "id": "d", "text": "Latency only depends on the file size" }
+      ],
+      "answer": "a",
+      "explanation": "RTT is dominated by physical distance and the number of hops; adding capacity doesn't shorten how long data takes to travel the path."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Bandwidth multiplied by RTT gives the amount of data that must be in flight to fill a link — the bandwidth-____ product.",
+      "answer": ["delay", "delay product"],
+      "explanation": "The bandwidth-delay product (bandwidth × RTT) is the in-flight data needed to saturate a link; too-small windows waste capacity."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "A 100 Mb/s link transfers data at roughly how many megabytes per second (before overhead)?",
+      "options": [
+        { "id": "a", "text": "About 12.5 MB/s" },
+        { "id": "b", "text": "About 100 MB/s" },
+        { "id": "c", "text": "About 800 MB/s" },
+        { "id": "d", "text": "About 1 MB/s" }
+      ],
+      "answer": "a",
+      "explanation": "Since 1 byte = 8 bits, 100 megabits/s ÷ 8 ≈ 12.5 megabytes/s, and that's before protocol overhead."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which statements are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "TCP treats packet loss as congestion and slows down" },
+        { "id": "b", "text": "Bufferbloat adds latency under load from oversized buffers" },
+        { "id": "c", "text": "Many web page loads are latency-bound due to multiple round trips" },
+        { "id": "d", "text": "Throughput can exceed the link's bandwidth" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Loss triggers congestion control, bufferbloat spikes latency, and page loads are often latency-bound. Throughput can never exceed bandwidth."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the round trips (roughly) before content on a cold HTTPS page load from a distant server.",
+      "items": [
+        { "id": "dns", "text": "DNS lookup" },
+        { "id": "tcp", "text": "TCP handshake" },
+        { "id": "tls", "text": "TLS handshake" },
+        { "id": "req", "text": "HTTP request/response" }
+      ],
+      "answer": ["dns", "tcp", "tls", "req"],
+      "explanation": "A cold load resolves DNS, completes the TCP handshake, then the TLS handshake, then the request — several RTTs before the first byte."
+    }
+  ]
+}

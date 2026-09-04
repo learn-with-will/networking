@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-05",
+  "lessonId": "lesson-05",
+  "title": "Packets, Frames, and Encapsulation",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the MTU of standard Ethernet?",
+      "options": [
+        { "id": "a", "text": "500 bytes" },
+        { "id": "b", "text": "1024 bytes" },
+        { "id": "c", "text": "1500 bytes" },
+        { "id": "d", "text": "65535 bytes" }
+      ],
+      "answer": "c",
+      "explanation": "Standard Ethernet has a 1500-byte MTU — the largest payload a single frame can carry on the link."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "In which header do port numbers live?",
+      "options": [
+        { "id": "a", "text": "The IP (Internet-layer) header" },
+        { "id": "b", "text": "The TCP/UDP (transport-layer) header" },
+        { "id": "c", "text": "The Ethernet frame header" },
+        { "id": "d", "text": "The physical layer" }
+      ],
+      "answer": "b",
+      "explanation": "Ports are a transport-layer concept, carried in the TCP/UDP header. The IP header has addresses, TTL, and a protocol field, but no ports."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The IP header field that is decremented by each router and drops the packet at 0 is the ____ (IPv6 calls it Hop Limit).",
+      "answer": ["TTL", "time to live", "time-to-live"],
+      "explanation": "The TTL (Time To Live) is a hop counter that prevents packets from looping forever; traceroute exploits it."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about fragmentation and MSS are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "IPv6 routers never fragment in transit; they drop and send 'Packet Too Big'" },
+        { "id": "b", "text": "MSS is roughly the MTU minus the IP and TCP headers" },
+        { "id": "c", "text": "IPv4 routers may fragment an oversized packet in transit" },
+        { "id": "d", "text": "Fragmentation is preferred because losing one fragment is harmless" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "IPv6 doesn't fragment in transit, IPv4 may, and MSS ≈ MTU − IP − TCP. Fragmentation is actually fragile: losing one fragment loses the whole packet."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these from the innermost payload to the outermost wrapper for an HTTP request over TCP/IP on Ethernet.",
+      "items": [
+        { "id": "http", "text": "HTTP request (application data)" },
+        { "id": "tcp", "text": "TCP header (segment)" },
+        { "id": "ip", "text": "IP header (packet)" },
+        { "id": "eth", "text": "Ethernet header/trailer (frame)" }
+      ],
+      "answer": ["http", "tcp", "ip", "eth"],
+      "explanation": "Encapsulation nests the HTTP data inside a TCP segment, inside an IP packet, inside an Ethernet frame."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its meaning.",
+      "pairs": [
+        { "left": "Payload", "right": "The data a layer is carrying" },
+        { "left": "MTU", "right": "Largest frame payload a link allows" },
+        { "left": "MSS", "right": "Largest application-data chunk in a TCP segment" },
+        { "left": "Fragmentation", "right": "Splitting an oversized IP packet to fit the MTU" }
+      ],
+      "explanation": "Payload is the carried data; MTU limits frame size; MSS is TCP's data chunk derived from MTU; fragmentation splits packets that don't fit."
+    }
+  ]
+}

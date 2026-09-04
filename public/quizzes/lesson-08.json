@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-08",
+  "lessonId": "lesson-08",
+  "title": "Your First Networking Tools",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which protocol does ping use?",
+      "options": [
+        { "id": "a", "text": "TCP" },
+        { "id": "b", "text": "UDP" },
+        { "id": "c", "text": "ICMP" },
+        { "id": "d", "text": "HTTP" }
+      ],
+      "answer": "c",
+      "explanation": "ping sends ICMP Echo Requests and times the Echo Replies. ICMP is its own layer-3 protocol, not TCP or UDP."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "You can ping 1.1.1.1 successfully but 'ping example.com' fails with 'name or service not known'. What is broken?",
+      "options": [
+        { "id": "a", "text": "DNS name resolution" },
+        { "id": "b", "text": "Your Ethernet cable" },
+        { "id": "c", "text": "Your default gateway" },
+        { "id": "d", "text": "The ICMP protocol itself" }
+      ],
+      "answer": "a",
+      "explanation": "Reaching a raw IP proves connectivity works; failing on a name means DNS resolution is the problem."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The router a host uses to reach destinations outside its local network is called the default ____.",
+      "answer": ["gateway", "gateway router"],
+      "explanation": "The default gateway is the exit point to other networks; you find it in 'ip route' as 'default via ...'."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about ping and ICMP are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "'time=' in ping output is the round-trip time (RTT)" },
+        { "id": "b", "text": "Many hosts and firewalls deliberately drop ICMP" },
+        { "id": "c", "text": "No ping reply always proves the host is powered off" },
+        { "id": "d", "text": "Pinging a raw IP tests connectivity without involving DNS" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "RTT is the 'time=' value, ICMP is often blocked, and pinging an IP avoids DNS. A blocked ping does not prove the host is down."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the bottom-up troubleshooting steps from nearest to farthest.",
+      "items": [
+        { "id": "iface", "text": "Interface up and has an IP" },
+        { "id": "gw", "text": "Reach the default gateway" },
+        { "id": "inet", "text": "Reach the internet by raw IP" },
+        { "id": "dns", "text": "Resolve a domain name" },
+        { "id": "svc", "text": "Reach the actual service (e.g. curl)" }
+      ],
+      "answer": ["iface", "gw", "inet", "dns", "svc"],
+      "explanation": "Test from closest to farthest — interface, gateway, internet-by-IP, DNS, then the service; the first failure localizes the problem."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each command to what it shows.",
+      "pairs": [
+        { "left": "ip addr", "right": "Interfaces and their IP addresses" },
+        { "left": "ip route", "right": "The routing table and default gateway" },
+        { "left": "ping", "right": "Reachability and round-trip time" },
+        { "left": "curl", "right": "Whether the actual service responds" }
+      ],
+      "explanation": "ip addr shows addresses, ip route shows routes/gateway, ping tests reachability, and curl tests the real application service."
+    }
+  ]
+}

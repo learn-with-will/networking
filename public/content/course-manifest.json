@@ -1,0 +1,410 @@
+[
+  {
+    "id": "lesson-01",
+    "slug": "what-is-a-network",
+    "title": "What Is a Network?",
+    "level": "beginner",
+    "order": 1,
+    "duration": 15,
+    "file": "beginner/what-is-a-network.md",
+    "summary": "What a computer network actually is — hosts, links, and switches passing small packets by agreed-upon rules — and how a network of networks becomes the internet.",
+    "tags": [
+      "foundations",
+      "packets",
+      "hosts",
+      "internet",
+      "protocols"
+    ]
+  },
+  {
+    "id": "lesson-02",
+    "slug": "osi-and-tcp-ip-models",
+    "title": "The OSI and TCP/IP Models",
+    "level": "beginner",
+    "order": 2,
+    "duration": 18,
+    "file": "beginner/osi-and-tcp-ip-models.md",
+    "summary": "How networking is organized into layers — the 7-layer OSI reference model, the 4-layer TCP/IP model the internet actually runs, and how encapsulation wraps data as it moves down the stack.",
+    "tags": [
+      "osi",
+      "tcp-ip",
+      "layers",
+      "encapsulation",
+      "models"
+    ]
+  },
+  {
+    "id": "lesson-03",
+    "slug": "ip-addresses",
+    "title": "IP Addresses",
+    "level": "beginner",
+    "order": 3,
+    "duration": 20,
+    "file": "beginner/ip-addresses.md",
+    "summary": "How hosts are addressed on the internet — IPv4's 32-bit dotted-decimal format, IPv6's 128-bit hex format, and the difference between public, private, and special-purpose addresses.",
+    "tags": [
+      "ip",
+      "ipv4",
+      "ipv6",
+      "addressing",
+      "rfc1918"
+    ]
+  },
+  {
+    "id": "lesson-04",
+    "slug": "mac-addresses-and-the-link-layer",
+    "title": "MAC Addresses and the Link Layer",
+    "level": "beginner",
+    "order": 4,
+    "duration": 18,
+    "file": "beginner/mac-addresses-and-the-link-layer.md",
+    "summary": "How devices talk on one local network — 48-bit MAC addresses, Ethernet frames, how switches learn where hosts are, and how ARP maps an IP address to a MAC address.",
+    "tags": [
+      "mac",
+      "ethernet",
+      "arp",
+      "switch",
+      "link-layer"
+    ]
+  },
+  {
+    "id": "lesson-05",
+    "slug": "packets-frames-and-encapsulation",
+    "title": "Packets, Frames, and Encapsulation",
+    "level": "beginner",
+    "order": 5,
+    "duration": 18,
+    "file": "beginner/packets-frames-and-encapsulation.md",
+    "summary": "What is actually inside a packet — the headers each layer adds, the payload they carry, and how MTU limits frame size and forces fragmentation or a smaller MSS.",
+    "tags": [
+      "encapsulation",
+      "headers",
+      "mtu",
+      "fragmentation",
+      "payload"
+    ]
+  },
+  {
+    "id": "lesson-06",
+    "slug": "ports-and-sockets",
+    "title": "Ports and Sockets",
+    "level": "beginner",
+    "order": 6,
+    "duration": 18,
+    "file": "beginner/ports-and-sockets.md",
+    "summary": "How one host runs many network services at once — port numbers and their ranges, the socket as an endpoint, and the five-tuple that uniquely identifies a connection.",
+    "tags": [
+      "ports",
+      "sockets",
+      "tcp",
+      "udp",
+      "five-tuple"
+    ]
+  },
+  {
+    "id": "lesson-07",
+    "slug": "client-server-model",
+    "title": "The Client–Server Model",
+    "level": "beginner",
+    "order": 7,
+    "duration": 16,
+    "file": "beginner/client-server-model.md",
+    "summary": "The dominant pattern of the internet — clients that initiate requests and servers that listen and respond — plus how it compares to peer-to-peer and why the request–response cycle shapes everything above it.",
+    "tags": [
+      "client-server",
+      "request-response",
+      "peer-to-peer",
+      "servers",
+      "clients"
+    ]
+  },
+  {
+    "id": "lesson-08",
+    "slug": "first-networking-tools",
+    "title": "Your First Networking Tools",
+    "level": "beginner",
+    "order": 8,
+    "duration": 20,
+    "file": "beginner/first-networking-tools.md",
+    "summary": "The first commands every developer should know — checking your own address with ip/ifconfig, testing reachability with ping, and a layer-by-layer method for finding where a connection breaks.",
+    "tags": [
+      "ping",
+      "ip",
+      "troubleshooting",
+      "icmp",
+      "cli"
+    ]
+  },
+  {
+    "id": "lesson-09",
+    "slug": "subnetting-and-cidr",
+    "title": "Subnetting and CIDR",
+    "level": "intermediate",
+    "order": 9,
+    "duration": 24,
+    "file": "intermediate/subnetting-and-cidr.md",
+    "summary": "How an IP address splits into a network part and a host part — reading CIDR notation and subnet masks, finding the network and broadcast addresses, and counting usable hosts.",
+    "tags": [
+      "subnetting",
+      "cidr",
+      "subnet-mask",
+      "network-address",
+      "broadcast"
+    ]
+  },
+  {
+    "id": "lesson-10",
+    "slug": "dns-the-internet-phonebook",
+    "title": "DNS: The Internet's Phonebook",
+    "level": "intermediate",
+    "order": 10,
+    "duration": 22,
+    "file": "intermediate/dns-the-internet-phonebook.md",
+    "summary": "How human-friendly names become IP addresses — the DNS hierarchy from root to authoritative servers, recursive resolution, the common record types, and how TTL-based caching keeps it fast.",
+    "tags": [
+      "dns",
+      "resolver",
+      "records",
+      "ttl",
+      "resolution"
+    ]
+  },
+  {
+    "id": "lesson-11",
+    "slug": "dhcp-and-auto-configuration",
+    "title": "DHCP and Automatic Configuration",
+    "level": "intermediate",
+    "order": 11,
+    "duration": 18,
+    "file": "intermediate/dhcp-and-auto-configuration.md",
+    "summary": "How a device gets an IP address the moment it joins a network — the DHCP DORA exchange, what a lease includes, how renewal works, and what happens when no DHCP server answers.",
+    "tags": [
+      "dhcp",
+      "dora",
+      "lease",
+      "gateway",
+      "auto-config"
+    ]
+  },
+  {
+    "id": "lesson-12",
+    "slug": "tcp-reliable-delivery",
+    "title": "TCP: Reliable, Ordered Delivery",
+    "level": "intermediate",
+    "order": 12,
+    "duration": 22,
+    "file": "intermediate/tcp-reliable-delivery.md",
+    "summary": "How TCP turns the internet's best-effort delivery into a reliable, ordered byte stream — the three-way handshake, sequence and acknowledgement numbers, retransmission, flow control, and connection teardown.",
+    "tags": [
+      "tcp",
+      "handshake",
+      "reliability",
+      "flow-control",
+      "sequence-numbers"
+    ]
+  },
+  {
+    "id": "lesson-13",
+    "slug": "udp-connectionless-delivery",
+    "title": "UDP: Fast, Connectionless Delivery",
+    "level": "intermediate",
+    "order": 13,
+    "duration": 18,
+    "file": "intermediate/udp-connectionless-delivery.md",
+    "summary": "The lightweight transport protocol — UDP sends independent datagrams with no handshake, ordering, or delivery guarantees, trading reliability for speed and simplicity where that trade-off makes sense.",
+    "tags": [
+      "udp",
+      "datagram",
+      "connectionless",
+      "real-time",
+      "transport"
+    ]
+  },
+  {
+    "id": "lesson-14",
+    "slug": "http-the-web-protocol",
+    "title": "HTTP: The Web's Protocol",
+    "level": "intermediate",
+    "order": 14,
+    "duration": 22,
+    "file": "intermediate/http-the-web-protocol.md",
+    "summary": "How the Web communicates — the structure of HTTP requests and responses, the meaning of methods and their safe/idempotent properties, the status code families, and how headers and cookies work.",
+    "tags": [
+      "http",
+      "methods",
+      "status-codes",
+      "headers",
+      "stateless"
+    ]
+  },
+  {
+    "id": "lesson-15",
+    "slug": "https-and-tls",
+    "title": "HTTPS and TLS: Encryption on the Wire",
+    "level": "intermediate",
+    "order": 15,
+    "duration": 22,
+    "file": "intermediate/https-and-tls.md",
+    "summary": "How the Web is secured — TLS provides confidentiality, integrity, and server authentication via certificates, using asymmetric crypto to agree a key and symmetric crypto for the data.",
+    "tags": [
+      "https",
+      "tls",
+      "certificates",
+      "encryption",
+      "handshake"
+    ]
+  },
+  {
+    "id": "lesson-16",
+    "slug": "troubleshooting-dig-curl-traceroute",
+    "title": "Troubleshooting with dig, curl, and traceroute",
+    "level": "intermediate",
+    "order": 16,
+    "duration": 22,
+    "file": "intermediate/troubleshooting-dig-curl-traceroute.md",
+    "summary": "Three essential command-line tools and how to combine them — dig to debug DNS, curl to probe HTTP/HTTPS, and traceroute to reveal the path and where it breaks.",
+    "tags": [
+      "dig",
+      "curl",
+      "traceroute",
+      "troubleshooting",
+      "diagnostics"
+    ]
+  },
+  {
+    "id": "lesson-17",
+    "slug": "routing-and-packet-forwarding",
+    "title": "Routing and Packet Forwarding",
+    "level": "advanced",
+    "order": 17,
+    "duration": 22,
+    "file": "advanced/routing-and-packet-forwarding.md",
+    "summary": "How packets find their way across the internet — the difference between routing and forwarding, routing tables and longest-prefix match, the default route, and how BGP ties independent networks together.",
+    "tags": [
+      "routing",
+      "forwarding",
+      "bgp",
+      "routing-table",
+      "longest-prefix"
+    ]
+  },
+  {
+    "id": "lesson-18",
+    "slug": "nat-and-port-forwarding",
+    "title": "NAT and Port Forwarding",
+    "level": "advanced",
+    "order": 18,
+    "duration": 20,
+    "file": "advanced/nat-and-port-forwarding.md",
+    "summary": "How many private devices share one public IPv4 address — Network Address Translation rewrites addresses and ports, port forwarding lets inbound connections in, and why NAT is not a security feature.",
+    "tags": [
+      "nat",
+      "pat",
+      "port-forwarding",
+      "private-address",
+      "ipv4"
+    ]
+  },
+  {
+    "id": "lesson-19",
+    "slug": "firewalls-and-network-security",
+    "title": "Firewalls and Network Security Basics",
+    "level": "advanced",
+    "order": 19,
+    "duration": 20,
+    "file": "advanced/firewalls-and-network-security.md",
+    "summary": "How networks control what traffic is allowed — packet-filtering vs stateful firewalls, default-deny policy, where firewalls sit, and how they fit into defense in depth.",
+    "tags": [
+      "firewall",
+      "stateful",
+      "packet-filtering",
+      "default-deny",
+      "security"
+    ]
+  },
+  {
+    "id": "lesson-20",
+    "slug": "load-balancing-and-reverse-proxies",
+    "title": "Load Balancing and Reverse Proxies",
+    "level": "advanced",
+    "order": 20,
+    "duration": 20,
+    "file": "advanced/load-balancing-and-reverse-proxies.md",
+    "summary": "How sites serve many users reliably — reverse proxies that front backend servers, load-balancing algorithms, Layer 4 vs Layer 7 balancing, health checks, and TLS termination.",
+    "tags": [
+      "load-balancing",
+      "reverse-proxy",
+      "health-checks",
+      "tls-termination",
+      "scaling"
+    ]
+  },
+  {
+    "id": "lesson-21",
+    "slug": "packet-analysis-with-tcpdump",
+    "title": "Packet Analysis with tcpdump",
+    "level": "advanced",
+    "order": 21,
+    "duration": 22,
+    "file": "advanced/packet-analysis-with-tcpdump.md",
+    "summary": "Seeing the actual bytes on the wire — capturing traffic with tcpdump, writing capture filters, reading a TCP handshake in the output, and saving pcap files for deeper analysis.",
+    "tags": [
+      "tcpdump",
+      "packet-capture",
+      "bpf",
+      "pcap",
+      "analysis"
+    ]
+  },
+  {
+    "id": "lesson-22",
+    "slug": "http2-http3-and-quic",
+    "title": "HTTP/2, HTTP/3, and QUIC",
+    "level": "advanced",
+    "order": 22,
+    "duration": 22,
+    "file": "advanced/http2-http3-and-quic.md",
+    "summary": "How the web's transport evolved — HTTP/2's binary multiplexing over TCP, the TCP head-of-line blocking it couldn't escape, and HTTP/3 solving it by running over QUIC on UDP.",
+    "tags": [
+      "http2",
+      "http3",
+      "quic",
+      "multiplexing",
+      "head-of-line"
+    ]
+  },
+  {
+    "id": "lesson-23",
+    "slug": "network-performance",
+    "title": "Network Performance: Latency, Bandwidth, and Throughput",
+    "level": "advanced",
+    "order": 23,
+    "duration": 20,
+    "file": "advanced/network-performance.md",
+    "summary": "What 'fast' really means on a network — the difference between bandwidth, throughput, and latency, how RTT and loss limit real speed, and why latency often matters more than raw capacity.",
+    "tags": [
+      "latency",
+      "bandwidth",
+      "throughput",
+      "congestion",
+      "performance"
+    ]
+  },
+  {
+    "id": "lesson-24",
+    "slug": "capstone-trace-a-request",
+    "title": "Capstone: Trace a Request End-to-End",
+    "level": "advanced",
+    "order": 24,
+    "duration": 24,
+    "file": "advanced/capstone-trace-a-request.md",
+    "summary": "The whole course in one journey — follow a single HTTPS request from typing a URL to rendered pixels, through DNS, ARP, routing, NAT, the TCP and TLS handshakes, and the HTTP exchange.",
+    "tags": [
+      "capstone",
+      "end-to-end",
+      "dns",
+      "tcp",
+      "integration"
+    ]
+  }
+]

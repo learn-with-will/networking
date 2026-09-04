@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-21",
+  "lessonId": "lesson-21",
+  "title": "Packet Analysis with tcpdump",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order the tcpdump Flags you'd see for a successful TCP handshake.",
+      "items": [
+        { "id": "s", "text": "[S] (SYN)" },
+        { "id": "sa", "text": "[S.] (SYN-ACK)" },
+        { "id": "a", "text": "[.] (ACK)" }
+      ],
+      "answer": ["s", "sa", "a"],
+      "explanation": "The three-way handshake appears as [S], then [S.], then [.] — where '.' denotes an ACK."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "You capture traffic to a server and see [S] sent repeatedly but never [S.]. What does this most likely mean?",
+      "options": [
+        { "id": "a", "text": "The SYN is unanswered — a firewall drop, wrong host, or downed service" },
+        { "id": "b", "text": "The application returned a 500 error" },
+        { "id": "c", "text": "TLS negotiation succeeded" },
+        { "id": "d", "text": "DNS resolved to the wrong record type" }
+      ],
+      "answer": "a",
+      "explanation": "No SYN-ACK means the connection never established — the SYN is being dropped or ignored, a network/firewall/host issue, not an app bug."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "Can passive packet capture read the plaintext body of an HTTPS request?",
+      "options": [
+        { "id": "a", "text": "No — TLS encrypts the payload; you see only metadata like IPs, ports, and the handshake" },
+        { "id": "b", "text": "Yes — tcpdump decrypts TLS automatically" },
+        { "id": "c", "text": "Yes — but only on port 80" },
+        { "id": "d", "text": "No — capture cannot see any HTTPS packets at all" }
+      ],
+      "answer": "a",
+      "explanation": "TLS keeps payloads encrypted; capture reveals connection metadata (IPs, ports, timing, SNI) but not the plaintext without the keys."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "To analyze traffic later in Wireshark, write packets to a file with tcpdump -w, producing a ____ file.",
+      "answer": ["pcap", ".pcap"],
+      "explanation": "tcpdump -w writes a pcap capture file that Wireshark and other analyzers can open for deep, protocol-aware inspection."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which are good tcpdump practices? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Confirm you are authorized to capture on that network/host" },
+        { "id": "b", "text": "Use a tight capture filter like 'host X and port 443'" },
+        { "id": "c", "text": "Use -n to avoid name resolution noise" },
+        { "id": "d", "text": "Always capture all traffic unfiltered on busy links" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Get authorization, filter tightly, and use -n for clarity. Capturing everything on a busy link overwhelms the terminal and host."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each tcpdump concept to its meaning.",
+      "pairs": [
+        { "left": "BPF filter", "right": "Expression selecting which packets to record" },
+        { "left": "[R] flag", "right": "A reset — connection refused" },
+        { "left": "-n", "right": "Skip name/port resolution (numeric output)" },
+        { "left": "pcap", "right": "The saved capture file format" }
+      ],
+      "explanation": "BPF filters select packets, [R] means refused, -n keeps output numeric, and pcap is the capture file format."
+    }
+  ]
+}

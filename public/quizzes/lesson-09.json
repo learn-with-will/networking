@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-09",
+  "lessonId": "lesson-09",
+  "title": "Subnetting and CIDR",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How many usable host addresses are in a /24 subnet?",
+      "options": [
+        { "id": "a", "text": "256" },
+        { "id": "b", "text": "254" },
+        { "id": "c", "text": "255" },
+        { "id": "d", "text": "128" }
+      ],
+      "answer": "b",
+      "explanation": "A /24 has 8 host bits = 256 addresses; subtracting the network and broadcast addresses leaves 254 usable hosts."
+    },
+    {
+      "id": "q2",
+      "type": "fill-blank",
+      "prompt": "Usable hosts in an IPv4 subnet equals 2 to the power of the host bits, minus ____ (for the network and broadcast addresses).",
+      "answer": ["2", "two"],
+      "explanation": "You subtract 2 — the network address (all host bits 0) and the broadcast address (all host bits 1) — except in /31 and /32."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "Which statement about CIDR prefixes is correct?",
+      "options": [
+        { "id": "a", "text": "A larger prefix like /30 means a smaller network with fewer hosts" },
+        { "id": "b", "text": "A larger prefix like /30 means a bigger network with more hosts" },
+        { "id": "c", "text": "The prefix length has no effect on network size" },
+        { "id": "d", "text": "/8 is smaller than /24" }
+      ],
+      "answer": "a",
+      "explanation": "A larger prefix has more network bits and fewer host bits, so it is a smaller network. /8 is much larger than /24."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "The network address has all host bits set to 0" },
+        { "id": "b", "text": "The broadcast address has all host bits set to 1" },
+        { "id": "c", "text": "A /31 has 2 usable addresses (both usable)" },
+        { "id": "d", "text": "Classful Class A/B/C addressing is the current best practice" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Network = host bits 0, broadcast = host bits 1, /31 has both addresses usable (RFC 3021). Classful addressing is obsolete — CIDR replaced it."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each CIDR prefix to its dotted-decimal mask.",
+      "pairs": [
+        { "left": "/24", "right": "255.255.255.0" },
+        { "left": "/16", "right": "255.255.0.0" },
+        { "left": "/26", "right": "255.255.255.192" },
+        { "left": "/30", "right": "255.255.255.252" }
+      ],
+      "explanation": "/24 = 255.255.255.0, /16 = 255.255.0.0, /26 = 255.255.255.192, /30 = 255.255.255.252."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order these subnets from the FEWEST usable hosts to the MOST.",
+      "items": [
+        { "id": "s30", "text": "/30 (2 usable)" },
+        { "id": "s28", "text": "/28 (14 usable)" },
+        { "id": "s26", "text": "/26 (62 usable)" },
+        { "id": "s24", "text": "/24 (254 usable)" }
+      ],
+      "answer": ["s30", "s28", "s26", "s24"],
+      "explanation": "Smaller prefix numbers mean more host bits and more usable hosts: /30 (2) < /28 (14) < /26 (62) < /24 (254)."
+    }
+  ]
+}

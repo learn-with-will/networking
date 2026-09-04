@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-22",
+  "lessonId": "lesson-22",
+  "title": "HTTP/2, HTTP/3, and QUIC",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What transport does HTTP/3 run over?",
+      "options": [
+        { "id": "a", "text": "QUIC, which runs over UDP" },
+        { "id": "b", "text": "TCP directly" },
+        { "id": "c", "text": "ICMP" },
+        { "id": "d", "text": "TLS over TCP, same as HTTP/2" }
+      ],
+      "answer": "a",
+      "explanation": "HTTP/3 runs over QUIC, and QUIC runs over UDP — not TCP."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why does HTTP/2 still suffer head-of-line blocking?",
+      "options": [
+        { "id": "a", "text": "All its streams share one TCP connection, and a lost segment stalls everything behind it" },
+        { "id": "b", "text": "It uses text framing that is slow to parse" },
+        { "id": "c", "text": "It opens too many UDP sockets" },
+        { "id": "d", "text": "It cannot compress headers" }
+      ],
+      "answer": "a",
+      "explanation": "HTTP/2 multiplexes at the application layer but rides one TCP connection; TCP's in-order guarantee means a lost segment blocks all streams (TCP HOL blocking)."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which advantages does HTTP/3 (QUIC) provide? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Independent streams — a lost packet stalls only its own stream" },
+        { "id": "b", "text": "Built-in TLS 1.3 and a faster handshake" },
+        { "id": "c", "text": "Connection migration across network changes" },
+        { "id": "d", "text": "Completely different HTTP methods and status codes" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "QUIC gives independent streams, built-in TLS 1.3, and connection migration. HTTP semantics (methods/status codes) stay the same across versions."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "HTTP/2 carries many concurrent request/response streams over one TCP connection — a technique called ____.",
+      "answer": ["multiplexing"],
+      "explanation": "Multiplexing interleaves many streams over a single connection, replacing HTTP/1.1's one-request-at-a-time model."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each item to the correct description.",
+      "pairs": [
+        { "left": "HTTP/1.1", "right": "One request/response at a time per connection" },
+        { "left": "HTTP/2", "right": "Multiplexed binary streams over one TCP connection" },
+        { "left": "HTTP/3", "right": "HTTP over QUIC (UDP) with independent streams" },
+        { "left": "HPACK", "right": "HTTP/2 header compression" }
+      ],
+      "explanation": "1.1 is serial, 2 multiplexes over TCP, 3 uses QUIC over UDP, and HPACK compresses HTTP/2 headers."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the HTTP versions from oldest to newest.",
+      "items": [
+        { "id": "h1", "text": "HTTP/1.1" },
+        { "id": "h2", "text": "HTTP/2" },
+        { "id": "h3", "text": "HTTP/3" }
+      ],
+      "answer": ["h1", "h2", "h3"],
+      "explanation": "The progression is HTTP/1.1, then HTTP/2 (binary/multiplexed over TCP), then HTTP/3 (over QUIC/UDP)."
+    }
+  ]
+}

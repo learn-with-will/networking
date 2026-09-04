@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-03",
+  "lessonId": "lesson-03",
+  "title": "IP Addresses",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How many bits are in an IPv4 address?",
+      "options": [
+        { "id": "a", "text": "16" },
+        { "id": "b", "text": "32" },
+        { "id": "c", "text": "64" },
+        { "id": "d", "text": "128" }
+      ],
+      "answer": "b",
+      "explanation": "IPv4 addresses are 32 bits, written as four 8-bit octets (0–255). IPv6 addresses are 128 bits."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which of these are private (RFC 1918) IPv4 addresses? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "10.4.5.6" },
+        { "id": "b", "text": "192.168.1.1" },
+        { "id": "c", "text": "172.20.0.5" },
+        { "id": "d", "text": "203.0.113.9" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "10.0.0.0/8, 192.168.0.0/16, and 172.16.0.0/12 (172.16–172.31) are private. 203.0.113.9 is in a public documentation range, not private."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "In an IPv6 address, a single run of all-zero groups can be replaced by the symbol ____ (used at most once).",
+      "answer": ["::", "double colon"],
+      "explanation": "'::' compresses one contiguous run of all-zero 16-bit groups, and may appear only once per address to stay unambiguous."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each address to its category.",
+      "pairs": [
+        { "left": "127.0.0.1", "right": "Loopback (this host)" },
+        { "left": "192.168.0.10", "right": "Private (RFC 1918)" },
+        { "left": "169.254.5.5", "right": "Link-local (no DHCP)" },
+        { "left": "8.8.8.8", "right": "Public / internet-routable" }
+      ],
+      "explanation": "127.0.0.1 is loopback, 192.168.x.x is private, 169.254.x.x is link-local, and 8.8.8.8 is a public address."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Which statement about IPv6 is correct?",
+      "options": [
+        { "id": "a", "text": "It is 128 bits and has no broadcast address (uses multicast/anycast)" },
+        { "id": "b", "text": "It is 64 bits and uses the same broadcast as IPv4" },
+        { "id": "c", "text": "It is written in dotted decimal like IPv4" },
+        { "id": "d", "text": "The '::' shortcut can be used as many times as you like" }
+      ],
+      "answer": "a",
+      "explanation": "IPv6 is 128 bits, written in hex groups, has no broadcast (multicast/anycast instead), and '::' may be used only once."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps to compress 2001:0db8:0000:0000:0000:0000:0000:0001.",
+      "items": [
+        { "id": "start", "text": "2001:0db8:0000:0000:0000:0000:0000:0001" },
+        { "id": "drop", "text": "Drop leading zeros: 2001:db8:0:0:0:0:0:1" },
+        { "id": "collapse", "text": "Collapse the zero run: 2001:db8::1" }
+      ],
+      "answer": ["start", "drop", "collapse"],
+      "explanation": "First drop leading zeros in each group, then replace the single run of all-zero groups with '::'."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-07",
+  "lessonId": "lesson-07",
+  "title": "The Client–Server Model",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "In the client–server model, which side initiates the connection?",
+      "options": [
+        { "id": "a", "text": "The client" },
+        { "id": "b", "text": "The server" },
+        { "id": "c", "text": "Neither — the router does" },
+        { "id": "d", "text": "Whichever has the lower IP address" }
+      ],
+      "answer": "a",
+      "explanation": "The client initiates by connecting to the server's known address and port; the server listens and responds."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What does it mean that HTTP is stateless?",
+      "options": [
+        { "id": "a", "text": "Each request is independent; the server keeps no memory between requests" },
+        { "id": "b", "text": "The server never responds" },
+        { "id": "c", "text": "No data is ever stored anywhere in the system" },
+        { "id": "d", "text": "The client and server must be on the same machine" }
+      ],
+      "answer": "a",
+      "explanation": "Statelessness means each request stands alone; any continuity (sessions) is layered on with cookies, tokens, or a database."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which statements are true about client–server vs peer-to-peer? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "In P2P, each node acts as both client and server" },
+        { "id": "b", "text": "A single program can be both client and server depending on the connection" },
+        { "id": "c", "text": "Client–server has a central server that can be a single point of failure" },
+        { "id": "d", "text": "In client–server, the server always initiates the connection" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "P2P nodes play both roles, one program can too, and the central server is a bottleneck/SPOF. The client — not the server — initiates."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "A server claims a port and waits for connections; this is called binding and ____.",
+      "answer": ["listening", "listen"],
+      "explanation": "A server binds to a port and listens, waiting to accept incoming client connections."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order a basic request–response exchange.",
+      "items": [
+        { "id": "listen", "text": "Server is listening on a known port" },
+        { "id": "connect", "text": "Client initiates a connection and sends a request" },
+        { "id": "process", "text": "Server processes the request" },
+        { "id": "respond", "text": "Server sends a response" },
+        { "id": "use", "text": "Client uses the response" }
+      ],
+      "answer": ["listen", "connect", "process", "respond", "use"],
+      "explanation": "The server listens, the client connects and requests, the server processes and responds, and the client uses the result."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each role or term to its description.",
+      "pairs": [
+        { "left": "Client", "right": "Initiates the connection and sends requests" },
+        { "left": "Server", "right": "Listens on a port and responds" },
+        { "left": "Stateless", "right": "No memory kept between requests" },
+        { "left": "Peer-to-peer", "right": "Every node is both client and server" }
+      ],
+      "explanation": "Clients initiate, servers listen/respond, stateless means no retained memory, and P2P blends both roles into every node."
+    }
+  ]
+}

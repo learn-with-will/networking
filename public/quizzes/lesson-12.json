@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-12",
+  "lessonId": "lesson-12",
+  "title": "TCP: Reliable, Ordered Delivery",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order the three segments of the TCP three-way handshake.",
+      "items": [
+        { "id": "syn", "text": "SYN (client → server)" },
+        { "id": "synack", "text": "SYN-ACK (server → client)" },
+        { "id": "ack", "text": "ACK (client → server)" }
+      ],
+      "answer": ["syn", "synack", "ack"],
+      "explanation": "The handshake is SYN, then SYN-ACK, then ACK, after which the connection is established."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "TCP sequence numbers count what?",
+      "options": [
+        { "id": "a", "text": "Segments" },
+        { "id": "b", "text": "Bytes in the stream" },
+        { "id": "c", "text": "Packets per second" },
+        { "id": "d", "text": "Open connections" }
+      ],
+      "answer": "b",
+      "explanation": "Sequence numbers count bytes; the number marks where a segment's first data byte sits in the overall byte stream."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which of these does TCP provide? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Reliable delivery via retransmission" },
+        { "id": "b", "text": "In-order delivery of bytes" },
+        { "id": "c", "text": "Flow control via a receive window" },
+        { "id": "d", "text": "Encryption of the data it carries" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "TCP gives reliability, ordering, and flow control. Encryption is not part of TCP — that is provided by TLS."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "TCP protects a fast sender from overwhelming a slow receiver using flow control, enforced by the receiver's advertised ____ size.",
+      "answer": ["window", "receive window"],
+      "explanation": "The receiver advertises a window (buffer space) limiting how much unacknowledged data can be in flight."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Which statement is correct?",
+      "options": [
+        { "id": "a", "text": "TCP guarantees delivery but not confidentiality — plaintext is readable on the path" },
+        { "id": "b", "text": "TCP automatically encrypts all data" },
+        { "id": "c", "text": "TCP is connectionless like UDP" },
+        { "id": "d", "text": "TCP delivers bytes out of order to be faster" }
+      ],
+      "answer": "a",
+      "explanation": "TCP is reliable and ordered but sends data in the clear; confidentiality requires TLS on top."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each TCP term to its role.",
+      "pairs": [
+        { "left": "SYN", "right": "Starts a connection (synchronize)" },
+        { "left": "ACK number", "right": "Next byte the receiver expects" },
+        { "left": "Retransmission", "right": "Resending unacknowledged data" },
+        { "left": "FIN", "right": "Gracefully closes one direction" }
+      ],
+      "explanation": "SYN opens a connection, the ACK number confirms received bytes, retransmission repairs loss, and FIN closes a direction."
+    }
+  ]
+}

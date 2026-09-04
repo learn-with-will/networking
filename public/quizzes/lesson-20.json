@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-20",
+  "lessonId": "lesson-20",
+  "title": "Load Balancing and Reverse Proxies",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is a reverse proxy?",
+      "options": [
+        { "id": "a", "text": "An intermediary in front of servers that receives client requests on their behalf" },
+        { "id": "b", "text": "An intermediary in front of clients that forwards their outbound requests" },
+        { "id": "c", "text": "A DNS server that caches records" },
+        { "id": "d", "text": "A tool that assigns IP addresses" }
+      ],
+      "answer": "a",
+      "explanation": "A reverse proxy fronts servers and receives requests for them. A proxy that fronts clients and forwards their requests is a forward proxy."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which capability requires a Layer 7 (not Layer 4) load balancer?",
+      "options": [
+        { "id": "a", "text": "Routing /api requests to one pool and /images to another" },
+        { "id": "b", "text": "Forwarding a TCP connection by destination port" },
+        { "id": "c", "text": "Balancing UDP by IP and port" },
+        { "id": "d", "text": "Passing traffic without reading it" }
+      ],
+      "answer": "a",
+      "explanation": "Routing by URL path requires reading HTTP, which is a Layer 7 feature. Layer 4 balances by IP/port without inspecting content."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A load balancer removes a failed backend from rotation automatically based on a periodic probe called a ____.",
+      "answer": ["health check", "health-check", "healthcheck"],
+      "explanation": "Health checks probe each backend (e.g. GET /health); unhealthy servers are removed and re-added when they recover."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each load-balancing algorithm to its behavior.",
+      "pairs": [
+        { "left": "Round-robin", "right": "Each request to the next server in turn" },
+        { "left": "Least-connections", "right": "To the server with the fewest active connections" },
+        { "left": "IP hash", "right": "Same client IP always to the same server" },
+        { "left": "Weighted", "right": "Bigger servers get proportionally more traffic" }
+      ],
+      "explanation": "Round-robin alternates, least-connections adapts to load, IP hash gives stickiness, and weighted accounts for capacity."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which are common jobs of a reverse proxy? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Terminating TLS at the edge" },
+        { "id": "b", "text": "Distributing requests across backends" },
+        { "id": "c", "text": "Caching and compression" },
+        { "id": "d", "text": "Assigning DHCP leases to clients" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Reverse proxies terminate TLS, balance load, and handle caching/compression/rate-limiting. DHCP leasing is unrelated."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order what happens when a backend crashes behind a load balancer with health checks.",
+      "items": [
+        { "id": "fail", "text": "The backend stops passing its health check" },
+        { "id": "remove", "text": "The load balancer removes it from rotation" },
+        { "id": "serve", "text": "Remaining healthy backends serve all traffic" },
+        { "id": "readd", "text": "When it recovers and passes checks, it is re-added" }
+      ],
+      "answer": ["fail", "remove", "serve", "readd"],
+      "explanation": "A failing check removes the backend, healthy servers absorb the load, and recovery re-adds it — keeping users unaffected."
+    }
+  ]
+}

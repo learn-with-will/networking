@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-15",
+  "lessonId": "lesson-15",
+  "title": "HTTPS and TLS: Encryption on the Wire",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple-choice",
+      "prompt": "Which guarantees does TLS provide? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Confidentiality (encryption)" },
+        { "id": "b", "text": "Integrity (tamper detection)" },
+        { "id": "c", "text": "Authentication of the server's identity" },
+        { "id": "d", "text": "A guarantee that the website's owner is honest" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "TLS gives confidentiality, integrity, and server authentication. It cannot vouch for the honesty of whoever runs the site."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "How does TLS use asymmetric and symmetric cryptography?",
+      "options": [
+        { "id": "a", "text": "Asymmetric to authenticate and agree a key, then symmetric for the bulk data" },
+        { "id": "b", "text": "Symmetric for the handshake, asymmetric for the data" },
+        { "id": "c", "text": "Only asymmetric crypto for everything" },
+        { "id": "d", "text": "Only symmetric crypto for everything" }
+      ],
+      "answer": "a",
+      "explanation": "TLS uses slow asymmetric crypto to authenticate the server and agree a shared key, then fast symmetric crypto for the actual data."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A trusted issuer that digitally signs certificates, binding a domain to a public key, is a certificate ____.",
+      "answer": ["authority", "authority (CA)", "CA"],
+      "explanation": "A Certificate Authority (CA) signs certificates; browsers verify the chain from a server's cert up to a trusted root CA."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "What does the browser padlock actually mean?",
+      "options": [
+        { "id": "a", "text": "The connection to that domain is encrypted and the domain's certificate is valid" },
+        { "id": "b", "text": "The website's owner is trustworthy and safe" },
+        { "id": "c", "text": "Your IP address is hidden from everyone" },
+        { "id": "d", "text": "The site cannot be a phishing site" }
+      ],
+      "answer": "a",
+      "explanation": "The padlock proves an encrypted, identity-verified channel to that domain — not that the site is honest, and it doesn't hide your destination IP."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each TLS term to its description.",
+      "pairs": [
+        { "left": "Certificate", "right": "Signed binding of a domain to a public key" },
+        { "left": "Chain of trust", "right": "Path from a cert up to a trusted root CA" },
+        { "left": "SNI", "right": "Hostname the client indicates in the handshake" },
+        { "left": "TLS 1.3", "right": "The current, streamlined TLS version" }
+      ],
+      "explanation": "A certificate binds identity to a key, the chain validates it up to a root, SNI selects the site, and TLS 1.3 is current."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the high-level steps of a TLS 1.3 handshake.",
+      "items": [
+        { "id": "hello", "text": "Client Hello (versions, ciphers, key-share, SNI)" },
+        { "id": "serverhello", "text": "Server Hello + certificate + key-share" },
+        { "id": "verify", "text": "Client verifies the certificate chain and name" },
+        { "id": "key", "text": "Both derive the same symmetric session key" },
+        { "id": "data", "text": "Encrypted HTTP data flows" }
+      ],
+      "answer": ["hello", "serverhello", "verify", "key", "data"],
+      "explanation": "The client offers parameters, the server responds with its certificate and key-share, the client validates identity, both derive the key, then encrypted data flows."
+    }
+  ]
+}

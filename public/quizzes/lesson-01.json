@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-01",
+  "lessonId": "lesson-01",
+  "title": "What Is a Network?",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which best describes a computer network?",
+      "options": [
+        { "id": "a", "text": "Two or more devices connected so they can exchange data" },
+        { "id": "b", "text": "A single very fast computer" },
+        { "id": "c", "text": "A website you open in a browser" },
+        { "id": "d", "text": "A program that stores files" }
+      ],
+      "answer": "a",
+      "explanation": "A network is two or more hosts connected by links so they can exchange data. A website is an application that runs over a network, not the network itself."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why is data split into packets rather than sent as one continuous stream?",
+      "options": [
+        { "id": "a", "text": "So many hosts can share links, packets can be routed independently, and only lost pieces are resent" },
+        { "id": "b", "text": "Because computers cannot store large files" },
+        { "id": "c", "text": "To make the data encrypted automatically" },
+        { "id": "d", "text": "Because routers can only understand text" }
+      ],
+      "answer": "a",
+      "explanation": "Packetization lets many conversations share the same links, allows packets to take different routes, and means a single lost packet can be resent instead of the whole file."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which of the following are examples of hosts on a network? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "A laptop" },
+        { "id": "b", "text": "A network printer" },
+        { "id": "c", "text": "A protocol" },
+        { "id": "d", "text": "A smartphone" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "A host is any device connected to the network — laptop, printer, phone. A protocol is a set of rules, not a device."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "The agreed-upon set of rules for the format and order of network messages is called a ____.",
+      "answer": ["protocol", "protocols"],
+      "explanation": "A protocol is the set of rules two hosts follow so they can understand each other's messages."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each networking piece to what it does.",
+      "pairs": [
+        { "left": "Host", "right": "A device connected to the network" },
+        { "left": "Link", "right": "The cable or radio connection between devices" },
+        { "left": "Switch", "right": "Connects hosts within one local network" },
+        { "left": "Router", "right": "Connects different networks to each other" }
+      ],
+      "explanation": "Hosts connect via links; switches join hosts inside a network; routers join separate networks."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps a packet takes when your laptop sends a message across the internet.",
+      "items": [
+        { "id": "split", "text": "The message is split into addressed packets" },
+        { "id": "router", "text": "A packet reaches your home router" },
+        { "id": "isp", "text": "Routers relay it hop by hop across networks" },
+        { "id": "deliver", "text": "The destination's router delivers it to the target host" },
+        { "id": "reassemble", "text": "The target reassembles the packets into the message" }
+      ],
+      "answer": ["split", "router", "isp", "deliver", "reassemble"],
+      "explanation": "Data is packetized, sent to your router, relayed hop by hop by routers, delivered by the destination network, and reassembled at the target host."
+    }
+  ]
+}

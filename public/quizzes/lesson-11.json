@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-11",
+  "lessonId": "lesson-11",
+  "title": "DHCP and Automatic Configuration",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Put the four DHCP (DORA) messages in order.",
+      "items": [
+        { "id": "d", "text": "Discover" },
+        { "id": "o", "text": "Offer" },
+        { "id": "r", "text": "Request" },
+        { "id": "a", "text": "Acknowledge" }
+      ],
+      "answer": ["d", "o", "r", "a"],
+      "explanation": "The DHCP exchange is Discover, Offer, Request, Acknowledge — the client discovers, a server offers, the client requests, and the server acknowledges."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which ports does DHCP use?",
+      "options": [
+        { "id": "a", "text": "UDP server 67, client 68" },
+        { "id": "b", "text": "TCP server 80, client 8080" },
+        { "id": "c", "text": "UDP 53 both ways" },
+        { "id": "d", "text": "TCP server 68, client 67" }
+      ],
+      "answer": "a",
+      "explanation": "DHCP runs over UDP with the server on port 67 and the client on port 68."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "A device has the address 169.254.10.5 and cannot reach the internet. What most likely happened?",
+      "options": [
+        { "id": "a", "text": "No DHCP server responded, so it self-assigned a link-local (APIPA) address" },
+        { "id": "b", "text": "It received a normal public address" },
+        { "id": "c", "text": "Its DNS server is misconfigured but DHCP worked" },
+        { "id": "d", "text": "It is using IPv6 only" }
+      ],
+      "answer": "a",
+      "explanation": "169.254.0.0/16 is the link-local (APIPA) range used when DHCP fails; such addresses have no gateway and cannot route to the internet."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "What does a DHCP lease typically provide? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "An IP address and subnet mask" },
+        { "id": "b", "text": "The default gateway" },
+        { "id": "c", "text": "DNS server addresses" },
+        { "id": "d", "text": "The website's TLS certificate" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "DHCP delivers the address, mask, gateway, DNS servers, and a lease time. TLS certificates have nothing to do with DHCP."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "A DHCP address is granted for a limited time called a ____, which the client renews before it expires.",
+      "answer": ["lease"],
+      "explanation": "A lease is a time-limited assignment; the client renews it (typically around 50% of the lease time) to keep the address."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each DHCP term to its meaning.",
+      "pairs": [
+        { "left": "Discover", "right": "Client broadcasts asking for a server" },
+        { "left": "Offer", "right": "Server proposes an address and settings" },
+        { "left": "Reservation", "right": "Maps a MAC to a fixed address via DHCP" },
+        { "left": "Lease time", "right": "How long the address stays valid" }
+      ],
+      "explanation": "Discover asks for servers, Offer proposes config, a reservation fixes an address by MAC, and lease time bounds validity."
+    }
+  ]
+}

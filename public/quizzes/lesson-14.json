@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-14",
+  "lessonId": "lesson-14",
+  "title": "HTTP: The Web's Protocol",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "match-pair",
+      "prompt": "Match each status code family to its meaning.",
+      "pairs": [
+        { "left": "2xx", "right": "Success" },
+        { "left": "3xx", "right": "Redirection" },
+        { "left": "4xx", "right": "Client error" },
+        { "left": "5xx", "right": "Server error" }
+      ],
+      "explanation": "1xx is informational, 2xx success, 3xx redirection, 4xx client error, and 5xx server error."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is the difference between HTTP 401 and 403?",
+      "options": [
+        { "id": "a", "text": "401 = not authenticated; 403 = authenticated but not allowed" },
+        { "id": "b", "text": "401 = server error; 403 = success" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "401 = redirect; 403 = not found" }
+      ],
+      "answer": "a",
+      "explanation": "401 Unauthorized means you must authenticate; 403 Forbidden means you are known but not permitted to do this."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which statements about HTTP methods are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "GET is safe and idempotent" },
+        { "id": "b", "text": "DELETE is idempotent but not safe" },
+        { "id": "c", "text": "POST is neither safe nor idempotent" },
+        { "id": "d", "text": "Safe and idempotent always mean the same thing" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "GET is safe+idempotent, DELETE is idempotent but changes state, POST is neither. Safe and idempotent are independent properties."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "HTTP is stateless, so continuity between requests is added with a token the server sets and the browser returns — a ____.",
+      "answer": ["cookie", "cookies"],
+      "explanation": "The server sends Set-Cookie and the browser returns the Cookie header on later requests, tying them to a session."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why is blindly retrying a timed-out POST risky?",
+      "options": [
+        { "id": "a", "text": "POST is not idempotent, so the retry may repeat side effects (e.g. a double charge)" },
+        { "id": "b", "text": "POST requests are always rejected on retry" },
+        { "id": "c", "text": "POST cannot carry a body" },
+        { "id": "d", "text": "Retrying changes the URL" }
+      ],
+      "answer": "a",
+      "explanation": "POST is not idempotent, so a retry can duplicate its effect. Idempotency keys or an idempotent method make retries safe."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the parts of an HTTP request from first to last.",
+      "items": [
+        { "id": "start", "text": "Start line (method + path + version)" },
+        { "id": "headers", "text": "Header lines" },
+        { "id": "blank", "text": "A blank line" },
+        { "id": "body", "text": "Optional body" }
+      ],
+      "answer": ["start", "headers", "blank", "body"],
+      "explanation": "An HTTP message is a start line, headers, a blank line, then an optional body."
+    }
+  ]
+}

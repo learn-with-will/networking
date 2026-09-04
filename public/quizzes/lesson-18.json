@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-18",
+  "lessonId": "lesson-18",
+  "title": "NAT and Port Forwarding",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What problem does NAT primarily solve?",
+      "options": [
+        { "id": "a", "text": "Letting many private hosts share one public IPv4 address" },
+        { "id": "b", "text": "Encrypting traffic on the wire" },
+        { "id": "c", "text": "Resolving domain names to IPs" },
+        { "id": "d", "text": "Compressing packets to save bandwidth" }
+      ],
+      "answer": "a",
+      "explanation": "NAT works around IPv4 address scarcity by letting a whole private network share a single public IP address."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "In PAT (NAT overload), what does the router rewrite on outbound packets?",
+      "options": [
+        { "id": "a", "text": "The source IP and source port" },
+        { "id": "b", "text": "Only the destination IP" },
+        { "id": "c", "text": "The TLS certificate" },
+        { "id": "d", "text": "Nothing — it just forwards them" }
+      ],
+      "answer": "a",
+      "explanation": "PAT rewrites the source IP and source port; the unique translated port lets many hosts share one public IP and keeps replies sorted out."
+    },
+    {
+      "id": "q3",
+      "type": "ordering",
+      "prompt": "Order the steps of an outbound connection through NAT and its reply.",
+      "items": [
+        { "id": "send", "text": "Internal host sends a packet with a private source IP" },
+        { "id": "rewrite", "text": "Router rewrites the source to its public IP and a unique port" },
+        { "id": "record", "text": "Router records the mapping in its translation table" },
+        { "id": "reply", "text": "Reply arrives addressed to the public IP and port" },
+        { "id": "back", "text": "Router translates it back to the private host" }
+      ],
+      "answer": ["send", "rewrite", "record", "reply", "back"],
+      "explanation": "NAT rewrites the private source to the public IP/port, records the mapping, and reverses it when the reply arrives so it reaches the right internal host."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "To let an external client reach an internal server through NAT, you configure a static rule called port ____.",
+      "answer": ["forwarding", "forward"],
+      "explanation": "Port forwarding maps inbound traffic on a public IP/port to a specific internal host and port."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which statements about NAT are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Outbound connections create translation-table entries automatically" },
+        { "id": "b", "text": "Unsolicited inbound packets are dropped unless a forward exists" },
+        { "id": "c", "text": "IPv6 largely removes the need for NAT" },
+        { "id": "d", "text": "NAT provides full network security by itself" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Outbound traffic builds mappings, inbound needs a forward, and IPv6 restores end-to-end addressing. NAT is not a security solution on its own."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each NAT term to its description.",
+      "pairs": [
+        { "left": "Translation table", "right": "Maps inside connections to translated public ports" },
+        { "left": "Port forwarding", "right": "Static rule for inbound to reach an internal host" },
+        { "left": "PAT / overload", "right": "Rewriting ports so hosts share one public IP" },
+        { "left": "NAT traversal", "right": "Techniques (STUN/TURN) to connect peers through NAT" }
+      ],
+      "explanation": "The table tracks mappings, forwarding lets inbound in, PAT shares one IP via ports, and traversal helps peer-to-peer through NAT."
+    }
+  ]
+}

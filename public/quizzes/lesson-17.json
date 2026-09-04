@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-17",
+  "lessonId": "lesson-17",
+  "title": "Routing and Packet Forwarding",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the difference between routing and forwarding?",
+      "options": [
+        { "id": "a", "text": "Routing builds the map of best next hops; forwarding moves each packet using it" },
+        { "id": "b", "text": "They are the same thing" },
+        { "id": "c", "text": "Routing moves packets; forwarding builds the table" },
+        { "id": "d", "text": "Forwarding only happens on the client, routing only on servers" }
+      ],
+      "answer": "a",
+      "explanation": "Routing (control plane) builds the routing table; forwarding (data plane) uses it to move each packet to its next hop."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "A packet to 10.0.5.20 matches routes 0.0.0.0/0, 10.0.0.0/8, and 10.0.5.0/24. Which is used?",
+      "options": [
+        { "id": "a", "text": "10.0.5.0/24 (longest / most specific prefix)" },
+        { "id": "b", "text": "0.0.0.0/0 (listed first)" },
+        { "id": "c", "text": "10.0.0.0/8 (middle option)" },
+        { "id": "d", "text": "All three simultaneously" }
+      ],
+      "answer": "a",
+      "explanation": "Longest-prefix match wins: /24 is more specific than /8 or /0, so the 10.0.5.0/24 route is chosen."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The catch-all route used when no more specific route matches is written as ____.",
+      "answer": ["0.0.0.0/0", "default route", "default"],
+      "explanation": "0.0.0.0/0 is the default route — everything not matched by a more specific prefix follows it."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about internet routing are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "IP delivery is hop-by-hop and best-effort" },
+        { "id": "b", "text": "BGP routes between autonomous systems and is policy-driven" },
+        { "id": "c", "text": "OSPF is an interior gateway protocol used within one network" },
+        { "id": "d", "text": "There is a single global planner that computes each packet's full path" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Delivery is hop-by-hop, BGP is the policy-driven exterior protocol, and OSPF is interior. No global planner exists — each router decides locally."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each routing term to its description.",
+      "pairs": [
+        { "left": "Routing table", "right": "Prefixes mapped to next hops" },
+        { "left": "Autonomous System", "right": "A network under one administrative control" },
+        { "left": "OSPF", "right": "An interior gateway protocol" },
+        { "left": "BGP", "right": "Routes between autonomous systems" }
+      ],
+      "explanation": "The table maps prefixes to next hops, an AS is one admin domain, OSPF is interior, and BGP is the exterior protocol."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order what a router does with an arriving packet.",
+      "items": [
+        { "id": "lookup", "text": "Look up the destination in the routing table" },
+        { "id": "match", "text": "Select the longest-prefix (most specific) match" },
+        { "id": "ttl", "text": "Decrement the TTL" },
+        { "id": "send", "text": "Forward out the interface toward the next hop" }
+      ],
+      "answer": ["lookup", "match", "ttl", "send"],
+      "explanation": "The router looks up the destination, picks the most specific route, decrements TTL, and forwards to the next hop."
+    }
+  ]
+}

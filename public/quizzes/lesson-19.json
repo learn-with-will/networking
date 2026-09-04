@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-19",
+  "lessonId": "lesson-19",
+  "title": "Firewalls and Network Security Basics",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What distinguishes a stateful firewall from a stateless one?",
+      "options": [
+        { "id": "a", "text": "It tracks connections and automatically allows replies to permitted flows" },
+        { "id": "b", "text": "It encrypts all traffic that passes through" },
+        { "id": "c", "text": "It only works on IPv6" },
+        { "id": "d", "text": "It judges each packet in isolation with no memory" }
+      ],
+      "answer": "a",
+      "explanation": "A stateful firewall keeps a connection-tracking table and allows established/related replies. Judging each packet alone describes a stateless filter."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which is the safer default firewall posture?",
+      "options": [
+        { "id": "a", "text": "Default-deny: block all, allow only what's needed" },
+        { "id": "b", "text": "Default-allow: permit all, block only known-bad" },
+        { "id": "c", "text": "Allow all inbound, deny all outbound" },
+        { "id": "d", "text": "No policy at all" }
+      ],
+      "answer": "a",
+      "explanation": "Default-deny (allow-list) exposes only explicitly needed traffic; default-allow inevitably leaves gaps as services and threats change."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Firewall rules are usually evaluated top-to-bottom with ____-match wins, ending in a catch-all deny.",
+      "answer": ["first", "first-match", "first match"],
+      "explanation": "First-match-wins means a broad deny placed above a needed allow will block it; put specific allows before the catch-all deny."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "A host-based firewall protects a single machine" },
+        { "id": "b", "text": "A firewall cannot stop attacks inside traffic it deliberately allows" },
+        { "id": "c", "text": "Reducing attack surface means closing unused ports and services" },
+        { "id": "d", "text": "A firewall alone is complete security with no other controls needed" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Host firewalls protect one machine, firewalls can't police allowed-service vulnerabilities, and closing ports reduces surface. Security needs defense in depth, not a firewall alone."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these firewall rules correctly for a default-deny inbound policy on a web server.",
+      "items": [
+        { "id": "https", "text": "allow inbound tcp any → server:443" },
+        { "id": "ssh", "text": "allow inbound tcp 10.0.0.0/24 → server:22" },
+        { "id": "est", "text": "allow established/related (stateful replies)" },
+        { "id": "deny", "text": "deny inbound any (catch-all)" }
+      ],
+      "answer": ["https", "ssh", "est", "deny"],
+      "explanation": "Specific allows and the established/related rule must come before the catch-all deny, or first-match would block them."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its meaning.",
+      "pairs": [
+        { "left": "Attack surface", "right": "The set of exposed services an attacker could target" },
+        { "left": "Defense in depth", "right": "Layering multiple independent controls" },
+        { "left": "Default-deny", "right": "Block all, allow only what's needed" },
+        { "left": "Established/related", "right": "Replies to a permitted outbound connection" }
+      ],
+      "explanation": "Attack surface is what's exposed, defense in depth layers controls, default-deny is an allow-list posture, and established/related covers tracked replies."
+    }
+  ]
+}

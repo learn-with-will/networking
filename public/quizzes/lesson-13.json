@@ -1,0 +1,77 @@
+{
+  "id": "quiz-lesson-13",
+  "lessonId": "lesson-13",
+  "title": "UDP: Fast, Connectionless Delivery",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which best describes UDP?",
+      "options": [
+        { "id": "a", "text": "A connectionless, best-effort transport with no delivery guarantee" },
+        { "id": "b", "text": "A reliable, ordered, connection-oriented transport" },
+        { "id": "c", "text": "A routing protocol for the internet core" },
+        { "id": "d", "text": "An encryption layer over TCP" }
+      ],
+      "answer": "a",
+      "explanation": "UDP sends independent datagrams with no handshake, ordering, or retransmission — it is connectionless and best-effort."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which guarantees does UDP NOT provide? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Retransmission of lost data" },
+        { "id": "b", "text": "In-order delivery" },
+        { "id": "c", "text": "A connection handshake" },
+        { "id": "d", "text": "Port numbers to reach the right application" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "UDP omits retransmission, ordering, and any handshake. It does still have ports (source and destination) to reach the right application."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "UDP's protocol data unit — a self-contained message with no relationship to others — is called a ____.",
+      "answer": ["datagram", "datagrams"],
+      "explanation": "UDP sends datagrams, each independent of the others, unlike TCP's continuous byte stream."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Why might a live video call prefer UDP over TCP?",
+      "options": [
+        { "id": "a", "text": "A frame that arrives late is useless, so it's better to drop loss and keep going" },
+        { "id": "b", "text": "UDP guarantees every frame arrives in order" },
+        { "id": "c", "text": "TCP cannot carry audio or video" },
+        { "id": "d", "text": "UDP encrypts the call automatically" }
+      ],
+      "answer": "a",
+      "explanation": "Real-time media values timeliness over completeness; retransmitting a late frame would only stall the stream, so UDP's fire-and-forget model fits."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each application to why it uses UDP.",
+      "pairs": [
+        { "left": "DNS", "right": "One small question and answer, no handshake needed" },
+        { "left": "VoIP / video", "right": "Timeliness matters more than completeness" },
+        { "left": "DHCP", "right": "Broadcast-based config before the host has an IP" },
+        { "left": "QUIC (HTTP/3)", "right": "Builds its own reliability and encryption over UDP" }
+      ],
+      "explanation": "DNS and DHCP are lightweight request/response, real-time media favors low latency, and QUIC reimplements reliability atop UDP."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order these transports from smallest to largest minimum header size.",
+      "items": [
+        { "id": "udp", "text": "UDP (8 bytes)" },
+        { "id": "tcp", "text": "TCP (20 bytes minimum)" }
+      ],
+      "answer": ["udp", "tcp"],
+      "explanation": "UDP's header is 8 bytes; TCP's minimum header is 20 bytes, which is part of why UDP is favored for high-rate, low-latency traffic."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-04",
+  "lessonId": "lesson-04",
+  "title": "MAC Addresses and the Link Layer",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How many bits is a MAC address?",
+      "options": [
+        { "id": "a", "text": "32" },
+        { "id": "b", "text": "48" },
+        { "id": "c", "text": "64" },
+        { "id": "d", "text": "128" }
+      ],
+      "answer": "b",
+      "explanation": "A MAC address is 48 bits, written as six hexadecimal pairs (e.g. 00:1A:2B:3C:4D:5E)."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What does ARP do?",
+      "options": [
+        { "id": "a", "text": "Resolves an IPv4 address to a MAC address on the local network" },
+        { "id": "b", "text": "Encrypts frames on the wire" },
+        { "id": "c", "text": "Assigns IP addresses to new devices" },
+        { "id": "d", "text": "Routes packets between the internet's networks" }
+      ],
+      "answer": "a",
+      "explanation": "ARP maps a known local IPv4 address to the MAC address needed to build and deliver a frame. IPv6 uses NDP for the same job."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which statements correctly contrast MAC and IP addresses? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "MAC is a layer-2 address used for delivery on one local link" },
+        { "id": "b", "text": "IP is a routable layer-3 address for end-to-end delivery" },
+        { "id": "c", "text": "The MAC address is rewritten at each hop" },
+        { "id": "d", "text": "The IP address is rewritten at each hop while the MAC stays the same" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "MAC is local/layer-2 and changes each hop; IP is routable/layer-3 and normally stays end-to-end. Option D reverses the truth."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "A network device that learns which host is on which port and forwards frames only to the correct port is called a ____.",
+      "answer": ["switch"],
+      "explanation": "A switch builds a MAC address table from the source MAC of incoming frames and forwards to the matching port, unlike a hub which floods every port."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the ARP steps when host A (same subnet) wants to reach host B and has no cached entry.",
+      "items": [
+        { "id": "need", "text": "A knows B's IP but not B's MAC" },
+        { "id": "broadcast", "text": "A broadcasts 'Who has B's IP?'" },
+        { "id": "reply", "text": "B replies with its MAC (unicast)" },
+        { "id": "cache", "text": "A caches the IP→MAC mapping" },
+        { "id": "send", "text": "A builds the frame and sends it to B" }
+      ],
+      "answer": ["need", "broadcast", "reply", "cache", "send"],
+      "explanation": "ARP broadcasts a request, the owner replies with its MAC, the sender caches the mapping, then delivers the frame directly."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its description.",
+      "pairs": [
+        { "left": "Frame", "right": "The link-layer PDU wrapping an IP packet" },
+        { "left": "OUI", "right": "The vendor prefix in a MAC address" },
+        { "left": "Broadcast domain", "right": "Hosts a broadcast frame reaches without a router" },
+        { "left": "NDP", "right": "The IPv6 replacement for ARP" }
+      ],
+      "explanation": "A frame carries the packet at layer 2; the OUI identifies the vendor; a broadcast domain is bounded by routers; NDP does neighbor resolution in IPv6."
+    }
+  ]
+}

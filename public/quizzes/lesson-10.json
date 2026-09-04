@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-10",
+  "lessonId": "lesson-10",
+  "title": "DNS: The Internet's Phonebook",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which DNS record maps a name to an IPv4 address?",
+      "options": [
+        { "id": "a", "text": "A" },
+        { "id": "b", "text": "AAAA" },
+        { "id": "c", "text": "MX" },
+        { "id": "d", "text": "TXT" }
+      ],
+      "answer": "a",
+      "explanation": "An A record maps a name to an IPv4 address; AAAA maps to IPv6, MX names mail servers, and TXT holds free-form text."
+    },
+    {
+      "id": "q2",
+      "type": "ordering",
+      "prompt": "Order the tiers a recursive resolver consults to resolve www.example.com from scratch.",
+      "items": [
+        { "id": "root", "text": "A root server (points to .com)" },
+        { "id": "tld", "text": "The .com TLD server (points to example.com's NS)" },
+        { "id": "auth", "text": "example.com's authoritative server (has the answer)" }
+      ],
+      "answer": ["root", "tld", "auth"],
+      "explanation": "Resolution walks root → TLD → authoritative, each referring the resolver one step closer to the answer."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The value that controls how long a DNS record may be cached before re-querying is the ____.",
+      "answer": ["TTL", "time to live", "time-to-live"],
+      "explanation": "The TTL (Time To Live), in seconds, tells resolvers how long they may cache a record before asking again."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about DNS are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "The 13 root-server identities (A–M) are served by many machines via anycast" },
+        { "id": "b", "text": "An MX record points to a hostname and carries a priority" },
+        { "id": "c", "text": "DNS normally uses UDP port 53, falling back to TCP port 53" },
+        { "id": "d", "text": "A CNAME can safely be placed at the zone apex" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Root identities are anycast clusters, MX points to a name with a priority, and DNS is UDP/53 with TCP/53 fallback. A CNAME must not sit at the zone apex."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each DNS record type to what it stores.",
+      "pairs": [
+        { "left": "AAAA", "right": "An IPv6 address for a name" },
+        { "left": "CNAME", "right": "An alias pointing to another name" },
+        { "left": "NS", "right": "The authoritative name servers for a zone" },
+        { "left": "PTR", "right": "A reverse mapping from IP to name" }
+      ],
+      "explanation": "AAAA gives IPv6, CNAME aliases a name, NS lists a zone's name servers, and PTR is reverse DNS (IP → name)."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "You lower a record's TTL a day before migrating a site. Why?",
+      "options": [
+        { "id": "a", "text": "So the change propagates quickly once you switch the IP" },
+        { "id": "b", "text": "To make the record permanently uncacheable" },
+        { "id": "c", "text": "Because low TTLs are required by DNS" },
+        { "id": "d", "text": "To hide the record from resolvers" }
+      ],
+      "answer": "a",
+      "explanation": "A low TTL means cached copies expire quickly, so when you change the IP, resolvers pick up the new value fast instead of serving a stale one."
+    }
+  ]
+}

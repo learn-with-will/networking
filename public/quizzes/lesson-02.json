@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-02",
+  "lessonId": "lesson-02",
+  "title": "The OSI and TCP/IP Models",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How many layers does the OSI reference model have?",
+      "options": [
+        { "id": "a", "text": "4" },
+        { "id": "b", "text": "5" },
+        { "id": "c", "text": "7" },
+        { "id": "d", "text": "3" }
+      ],
+      "answer": "c",
+      "explanation": "The OSI model has 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application. The TCP/IP model has 4."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each protocol to the layer it belongs to.",
+      "pairs": [
+        { "left": "IP", "right": "Internet / Network layer (3)" },
+        { "left": "TCP", "right": "Transport layer (4)" },
+        { "left": "HTTP", "right": "Application layer" },
+        { "left": "Ethernet", "right": "Link layer (1-2)" }
+      ],
+      "explanation": "IP is layer 3, TCP is layer 4, HTTP is an application-layer protocol, and Ethernet operates at the link layer."
+    },
+    {
+      "id": "q3",
+      "type": "ordering",
+      "prompt": "Order the TCP/IP layers from the topmost (closest to the app) down to the wire.",
+      "items": [
+        { "id": "app", "text": "Application" },
+        { "id": "transport", "text": "Transport" },
+        { "id": "internet", "text": "Internet" },
+        { "id": "link", "text": "Link" }
+      ],
+      "answer": ["app", "transport", "internet", "link"],
+      "explanation": "The TCP/IP stack, top to bottom, is Application, Transport, Internet, Link."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "Wrapping data with a header at each layer as it moves down the sending stack is called ____.",
+      "answer": ["encapsulation"],
+      "explanation": "Encapsulation adds each layer's header (and the link layer's trailer) on the way down; de-encapsulation strips them on the way up."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which statements about the two models are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "The internet is actually built on the TCP/IP model" },
+        { "id": "b", "text": "OSI is mainly a reference and teaching model" },
+        { "id": "c", "text": "TCP is on the same layer as IP" },
+        { "id": "d", "text": "The Transport-layer PDU is called a segment (TCP) or datagram (UDP)" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "The internet runs TCP/IP; OSI is a reference model; the transport PDU is a segment/datagram. TCP (transport, 4) and IP (internet, 3) are on different layers."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "What is the Internet-layer (IP) PDU called?",
+      "options": [
+        { "id": "a", "text": "Frame" },
+        { "id": "b", "text": "Packet" },
+        { "id": "c", "text": "Segment" },
+        { "id": "d", "text": "Bit" }
+      ],
+      "answer": "b",
+      "explanation": "The IP (Internet-layer) PDU is a packet. A frame is the link-layer PDU, a segment is the transport-layer PDU, and bits are on the physical medium."
+    }
+  ]
+}

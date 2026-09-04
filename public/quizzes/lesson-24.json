@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-24",
+  "lessonId": "lesson-24",
+  "title": "Capstone: Trace a Request End-to-End",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order the main steps of a cold HTTPS page load, from URL to content.",
+      "items": [
+        { "id": "dns", "text": "DNS resolution (name → IP)" },
+        { "id": "route", "text": "Routing decision + ARP for the gateway" },
+        { "id": "tcp", "text": "TCP three-way handshake" },
+        { "id": "tls", "text": "TLS handshake" },
+        { "id": "http", "text": "HTTP request and response" }
+      ],
+      "answer": ["dns", "route", "tcp", "tls", "http"],
+      "explanation": "Resolve the name, decide the next hop (and ARP for it), establish TCP, secure it with TLS, then exchange HTTP."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "When your laptop sends a request to a remote server, whose MAC address is the destination in the first frame?",
+      "options": [
+        { "id": "a", "text": "The default gateway's MAC (the next hop)" },
+        { "id": "b", "text": "The remote server's MAC" },
+        { "id": "c", "text": "The DNS resolver's MAC" },
+        { "id": "d", "text": "A broadcast MAC, always" }
+      ],
+      "answer": "a",
+      "explanation": "The server is remote, so the frame goes to the default gateway first; its MAC (found via ARP) is the destination, while the destination IP is the server's."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "What does NAT do to the reply packets coming back to your laptop?",
+      "options": [
+        { "id": "a", "text": "Translates the public destination back to your private address using its mapping" },
+        { "id": "b", "text": "Encrypts them with TLS" },
+        { "id": "c", "text": "Drops them because they are inbound" },
+        { "id": "d", "text": "Rewrites the HTTP status code" }
+      ],
+      "answer": "a",
+      "explanation": "NAT recorded the outbound mapping, so it reverses it on replies — translating the public destination back to your private IP/port so the reply reaches your laptop."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about the end-to-end flow are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "DNS resolution happens before any TCP connection is made" },
+        { "id": "b", "text": "The destination IP stays the same end-to-end while the MAC changes each hop" },
+        { "id": "c", "text": "A cold load takes several round trips before content arrives" },
+        { "id": "d", "text": "The TLS handshake happens before the TCP handshake" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "DNS comes first, the IP is stable while MAC changes per hop, and a cold load is multi-RTT. TLS runs after TCP is established, not before."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each step of the flow to the tool that inspects it.",
+      "pairs": [
+        { "left": "DNS resolution", "right": "dig" },
+        { "left": "The path across the internet", "right": "traceroute" },
+        { "left": "TCP/TLS/HTTP exchange", "right": "curl -v" },
+        { "left": "Raw packets on the wire", "right": "tcpdump" }
+      ],
+      "explanation": "dig checks DNS, traceroute maps the path, curl -v shows the handshakes and HTTP, and tcpdump reveals the actual packets."
+    },
+    {
+      "id": "q6",
+      "type": "fill-blank",
+      "prompt": "Because a cold load needs multiple sequential round trips, its startup time is dominated by ____, not bandwidth.",
+      "answer": ["latency", "RTT", "round-trip time"],
+      "explanation": "DNS, TCP, TLS, and HTTP each cost round trips, so latency (RTT) dominates a cold load — more bandwidth won't shorten those trips."
+    }
+  ]
+}

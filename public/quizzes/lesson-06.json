@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-06",
+  "lessonId": "lesson-06",
+  "title": "Ports and Sockets",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the full range of port numbers?",
+      "options": [
+        { "id": "a", "text": "0 to 255" },
+        { "id": "b", "text": "0 to 1023" },
+        { "id": "c", "text": "0 to 65535" },
+        { "id": "d", "text": "1 to 4,294,967,295" }
+      ],
+      "answer": "c",
+      "explanation": "Ports are 16-bit numbers, so they range from 0 to 65535."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each service to its default port.",
+      "pairs": [
+        { "left": "HTTP", "right": "80" },
+        { "left": "HTTPS", "right": "443" },
+        { "left": "SSH", "right": "22" },
+        { "left": "DNS", "right": "53" }
+      ],
+      "explanation": "HTTP defaults to 80, HTTPS to 443, SSH to 22, and DNS to 53."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The five values (protocol, source IP, source port, destination IP, destination port) that uniquely identify a connection are called the ____.",
+      "answer": ["five-tuple", "5-tuple", "five tuple"],
+      "explanation": "The five-tuple uniquely identifies each connection, which is how one server port can serve many clients at once."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Which band do ephemeral (dynamic) source ports fall in?",
+      "options": [
+        { "id": "a", "text": "0–1023" },
+        { "id": "b", "text": "1024–49151" },
+        { "id": "c", "text": "49152–65535" },
+        { "id": "d", "text": "There is no such band" }
+      ],
+      "answer": "c",
+      "explanation": "IANA's dynamic/ephemeral range is 49152–65535; the OS picks source ports from here for outgoing connections."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which statements are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "A socket is an endpoint: an IP address plus a port for a protocol" },
+        { "id": "b", "text": "TCP port 80 and UDP port 80 are different ports" },
+        { "id": "c", "text": "One server port can serve many clients simultaneously" },
+        { "id": "d", "text": "Two programs can listen on the same port and protocol at the same time" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Sockets are IP+port endpoints, ports are per-protocol, and one port serves many clients via distinct five-tuples. Two processes cannot bind the same port+protocol at once."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the port bands from lowest numbers to highest.",
+      "items": [
+        { "id": "well", "text": "Well-known (0–1023)" },
+        { "id": "reg", "text": "Registered (1024–49151)" },
+        { "id": "eph", "text": "Ephemeral (49152–65535)" }
+      ],
+      "answer": ["well", "reg", "eph"],
+      "explanation": "The IANA bands run well-known, then registered, then dynamic/ephemeral."
+    }
+  ]
+}
